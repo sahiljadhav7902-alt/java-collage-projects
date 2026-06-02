@@ -1,0 +1,557 @@
+pathology-lab-system/
+├── pom.xml
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com.mycompany.pathology/
+│   │   │       ├── BllPatient.java
+│   │   │       ├── BllPhysician.java
+│   │   │       ├── BllLaboratory.java
+│   │   │       ├── BllTechnician.java
+│   │   │       ├── BllTestMaster.java
+│   │   │       ├── BllOrderHeader.java
+│   │   │       ├── BllOrderTest.java
+│   │   │       ├── BllSpecimen.java
+│   │   │       ├── BllResult.java
+│   │   │       ├── BllInvoice.java
+│   │   │       ├── BllInventory.java
+│   │   │       └── DataAccess.java
+│   │   │
+│   │   └── webapp/
+│   │       ├── WEB-INF/
+│   │       │   └── web.xml
+│   │       │
+│   │       ├── index.jsp          # Landing page
+│   │       ├── login.jsp         # Login page
+│   │       ├── register.jsp      # Patient registration
+│   │       ├── dashboard.jsp     # Admin dashboard
+│   │       ├── patients.jsp      # Patient management
+│   │       ├── physicians.jsp    # Physician management
+│   │       ├── tests.jsp         # Test catalog
+│   │       ├── orders.jsp        # Test orders
+│   │       ├── results.jsp       # Results viewing
+│   │       ├── billing.jsp       # Billing system
+│   │       └── inventory.jsp     # Inventory management
+│   │
+│   └── resources/
+│       └── database/
+│           └── pathologylab.sql   # Your database script
+└── target/
+    └── (Build output)
+
+
+
+
+
+com.mycompany.pathology/
+├── DataAccess.java              # Database connection handler
+├── BllPatient.java             # Patient management BLL
+├── BllPhysician.java           # Physician management BLL
+├── BllLaboratory.java          # Laboratory management BLL
+├── BllTechnician.java          # Technician management BLL
+├── BllTestMaster.java          # Test catalog management BLL
+├── BllOrderHeader.java         # Order management BLL
+├── BllOrderTest.java           # Order test management BLL
+├── BllSpecimen.java            # Specimen management BLL
+├── BllResult.java              # Result management BLL
+├── BllInvoice.java             # Billing management BLL
+└── BllInventory.java           # Inventory management BLL
+
+
+this my file structuer bll/
+├── BllUserMaster.java
+├── BllDashboard.java
+├── BllLaboratory.java
+├── BllPhysician.java
+├── BllPatient.java
+├── BllDiagnosis.java
+├── BllTestCatalog.java
+├── BllOrder.java
+├── BllSpecimen.java
+├── BllResult.java
+├── BllBilling.java
+├── BllInventory.java
+└── BllReportGenerator.java
+
+🔥 Your BLL Layer Explanation
+1️⃣ BllUserMaster.java
+🔹 Used For:
+
+Login authentication
+
+Register user (admin / physician / patient)
+
+Update profile
+
+Activate / deactivate user
+
+Get user by role
+
+Change password
+
+🔹 Works With:
+
+users table
+
+🔹 Admin Pages Using This:
+
+Manage Users
+
+Manage Doctors
+
+Manage Patients
+
+Login Page
+
+2️⃣ BllDashboard.java
+🔹 Used For:
+
+Total Patients Count
+
+Total Physicians Count
+
+Total Orders
+
+Total Revenue
+
+Pending Orders
+
+Completed Orders
+
+🔹 Works With:
+
+users
+
+orders
+
+billing
+
+results
+
+🔹 Admin Page:
+
+Admin Dashboard.jsp
+
+3️⃣ BllLaboratory.java
+🔹 Used For:
+
+Add Lab
+
+Update Lab
+
+Delete Lab
+
+View Lab List
+
+🔹 Works With:
+
+laboratories table
+
+🔹 Admin Page:
+
+Manage Laboratories.jsp
+
+4️⃣ BllPhysician.java
+🔹 Used For:
+
+Get all physicians
+
+Assign physician to order
+
+View physician details
+
+🔹 Works With:
+
+users table (where user_type = 'physician')
+
+🔹 Used In:
+
+Order Creation
+
+Admin Physician Management
+
+5️⃣ BllPatient.java
+🔹 Used For:
+
+Register patient
+
+Update patient
+
+Get patient by MRN
+
+Patient details view
+
+🔹 Works With:
+
+users table (where user_type = 'patient')
+
+6️⃣ BllDiagnosis.java
+🔹 Used For:
+
+Add diagnosis
+
+Update diagnosis
+
+View diagnosis list
+
+🔹 Works With:
+
+diagnoses table
+
+7️⃣ BllTestCatalog.java
+🔹 Used For:
+
+Add new test
+
+Update test
+
+Delete test
+
+View all tests
+
+🔹 Works With:
+
+tests table
+
+🔹 Admin Page:
+
+Manage Test Catalog.jsp
+
+8️⃣ BllOrder.java
+🔹 Used For:
+
+Create order
+
+Update order status
+
+Get order list
+
+Get order by patient
+
+Cancel order
+
+🔹 Works With:
+
+orders
+
+order_tests
+
+🔹 Very Important File 🚨
+9️⃣ BllSpecimen.java
+🔹 Used For:
+
+Add specimen
+
+Update specimen status
+
+Generate barcode
+
+Track specimen
+
+🔹 Works With:
+
+specimens table
+
+🔟 BllResult.java
+🔹 Used For:
+
+Add test result
+
+Update result
+
+Validate result
+
+Mark abnormal flag
+
+🔹 Works With:
+
+results table
+
+1️⃣1️⃣ BllBilling.java
+🔹 Used For:
+
+Generate bill
+
+Update payment status
+
+Calculate total amount
+
+Get billing report
+
+🔹 Works With:
+
+billing table
+
+1️⃣2️⃣ BllInventory.java
+🔹 Used For:
+
+Add inventory item
+
+Update quantity
+
+Check expiry
+
+Low stock alert
+
+🔹 Works With:
+
+inventory table
+
+1️⃣3️⃣ BllReportGenerator.java
+🔹 Used For:
+
+Generate:
+
+Order Report
+
+Billing Report
+
+Patient Report
+
+Test Report
+
+Revenue Report
+
+🔹 Uses:
+
+Multiple tables depending on report
+
+webapp/
+│
+├── admin/
+│   ├── dashboard.jsp
+│   ├── laboratories.jsp
+│   ├── physicians.jsp
+│   ├── technicians.jsp
+│   ├── tests.jsp
+│   ├── inventory.jsp
+│   └── billing.jsp
+│
+├── doctor/
+│   ├── dashboard.jsp
+│   ├── patients.jsp
+│   ├── create-order.jsp
+│   ├── orders.jsp
+│   └── results.jsp
+│
+├── patient/
+│   ├── register.jsp
+│   ├── dashboard.jsp
+│   ├── orders.jsp
+│   ├── results.jsp
+│   └── billing.jsp
+│
+├── login.jsp
+├── logout.jsp
+└── index.jsp
+-- Laboratories Table
+CREATE TABLE laboratories (
+    lab_id INT AUTO_INCREMENT PRIMARY KEY,
+    lab_name VARCHAR(100) NOT NULL,
+    lab_code VARCHAR(20) UNIQUE NOT NULL,
+    address TEXT,
+    phone VARCHAR(20),
+    email VARCHAR(100),
+    contact_person VARCHAR(100),
+    status ENUM('ACTIVE', 'INACTIVE') DEFAULT 'ACTIVE',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Physicians Table
+CREATE TABLE physicians (
+    physician_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    npi_number VARCHAR(20) UNIQUE,
+    specialization VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(20),
+    address TEXT,
+    license_number VARCHAR(50),
+    status ENUM('ACTIVE', 'INACTIVE') DEFAULT 'ACTIVE',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Technicians Table
+CREATE TABLE technicians (
+    technician_id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    employee_id VARCHAR(20) UNIQUE,
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(20),
+    lab_id INT,
+    specialization VARCHAR(100),
+    certification VARCHAR(100),
+    status ENUM('ACTIVE', 'INACTIVE') DEFAULT 'ACTIVE',
+    FOREIGN KEY (lab_id) REFERENCES laboratories(lab_id),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Patients Table
+CREATE TABLE patients (
+    patient_id INT AUTO_INCREMENT PRIMARY KEY,
+    mrn VARCHAR(20) UNIQUE NOT NULL,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    date_of_birth DATE,
+    gender ENUM('MALE', 'FEMALE', 'OTHER'),
+    phone VARCHAR(20),
+    email VARCHAR(100),
+    address TEXT,
+    emergency_contact VARCHAR(100),
+    emergency_phone VARCHAR(20),
+    blood_group VARCHAR(10),
+    allergies TEXT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Diagnoses Table (ICD-10)
+CREATE TABLE diagnoses (
+    diagnosis_id INT AUTO_INCREMENT PRIMARY KEY,
+    code VARCHAR(10) UNIQUE NOT NULL,
+    description VARCHAR(255) NOT NULL,
+    category VARCHAR(100),
+    status ENUM('ACTIVE', 'INACTIVE') DEFAULT 'ACTIVE'
+);
+
+-- Tests Table (LOINC/SNOMED)
+CREATE TABLE tests (
+    test_id INT AUTO_INCREMENT PRIMARY KEY,
+    test_name VARCHAR(100) NOT NULL,
+    loinc_code VARCHAR(20) UNIQUE,
+    snomed_code VARCHAR(20),
+    category VARCHAR(50),
+    specimen_type VARCHAR(50),
+    method VARCHAR(100),
+    normal_range TEXT,
+    unit VARCHAR(20),
+    price DECIMAL(10,2),
+    turnaround_time INT, -- in hours
+    status ENUM('ACTIVE', 'INACTIVE') DEFAULT 'ACTIVE'
+);
+
+-- Orders Table
+CREATE TABLE orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_number VARCHAR(30) UNIQUE NOT NULL,
+    patient_id INT,
+    physician_id INT,
+    lab_id INT,
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    expected_date DATE,
+    status ENUM('PENDING', 'PROCESSING', 'COMPLETED', 'CANCELLED') DEFAULT 'PENDING',
+    priority ENUM('ROUTINE', 'STAT', 'URGENT') DEFAULT 'ROUTINE',
+    notes TEXT,
+    total_amount DECIMAL(10,2),
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id),
+    FOREIGN KEY (physician_id) REFERENCES physicians(physician_id),
+    FOREIGN KEY (lab_id) REFERENCES laboratories(lab_id)
+);
+
+-- Order Tests Junction Table
+CREATE TABLE order_tests (
+    order_test_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    test_id INT,
+    quantity INT DEFAULT 1,
+    price DECIMAL(10,2),
+    status ENUM('PENDING', 'PROCESSING', 'COMPLETED') DEFAULT 'PENDING',
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (test_id) REFERENCES tests(test_id)
+);
+
+-- Specimens Table
+CREATE TABLE specimens (
+    specimen_id INT AUTO_INCREMENT PRIMARY KEY,
+    specimen_barcode VARCHAR(50) UNIQUE NOT NULL,
+    order_id INT,
+    test_id INT,
+    specimen_type VARCHAR(50),
+    collection_date TIMESTAMP,
+    collected_by VARCHAR(100),
+    received_date TIMESTAMP,
+    status ENUM('COLLECTED', 'RECEIVED', 'PROCESSING', 'COMPLETED', 'REJECTED') DEFAULT 'COLLECTED',
+    storage_location VARCHAR(50),
+    expiry_date DATE,
+    notes TEXT,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id)
+);
+
+-- Results Table
+CREATE TABLE results (
+    result_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    test_id INT,
+    specimen_id INT,
+    result_value TEXT,
+    normal_range TEXT,
+    unit VARCHAR(20),
+    status ENUM('PRELIMINARY', 'FINAL', 'AMENDED') DEFAULT 'PRELIMINARY',
+    performed_by VARCHAR(100),
+    verified_by VARCHAR(100),
+    result_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    verified_date TIMESTAMP,
+    comments TEXT,
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (test_id) REFERENCES tests(test_id),
+    FOREIGN KEY (specimen_id) REFERENCES specimens(specimen_id)
+);
+
+-- Billing Table
+CREATE TABLE billing (
+    billing_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_id INT,
+    patient_id INT,
+    cpt_code VARCHAR(10),
+    description VARCHAR(255),
+    quantity INT DEFAULT 1,
+    unit_price DECIMAL(10,2),
+    total_amount DECIMAL(10,2),
+    status ENUM('PENDING', 'BILLED', 'PAID', 'PARTIAL') DEFAULT 'PENDING',
+    billed_date TIMESTAMP,
+    paid_date TIMESTAMP,
+    payment_method VARCHAR(50),
+    insurance_claim_id VARCHAR(50),
+    FOREIGN KEY (order_id) REFERENCES orders(order_id),
+    FOREIGN KEY (patient_id) REFERENCES patients(patient_id)
+);
+
+-- Inventory Table
+CREATE TABLE inventory (
+    inventory_id INT AUTO_INCREMENT PRIMARY KEY,
+    item_name VARCHAR(100) NOT NULL,
+    item_code VARCHAR(30) UNIQUE,
+    category VARCHAR(50),
+    description TEXT,
+    unit VARCHAR(20),
+    current_stock INT DEFAULT 0,
+    minimum_stock INT DEFAULT 0,
+    maximum_stock INT DEFAULT 0,
+    unit_cost DECIMAL(10,2),
+    supplier VARCHAR(100),
+    expiry_date DATE,
+    storage_location VARCHAR(50),
+    status ENUM('ACTIVE', 'INACTIVE', 'DISCONTINUED') DEFAULT 'ACTIVE',
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Inventory Transactions Table
+CREATE TABLE inventory_transactions (
+    transaction_id INT AUTO_INCREMENT PRIMARY KEY,
+    inventory_id INT,
+    transaction_type ENUM('IN', 'OUT') NOT NULL,
+    quantity INT NOT NULL,
+    reference_type VARCHAR(50), -- ORDER, ADJUSTMENT, etc.
+    reference_id INT,
+    performed_by VARCHAR(100),
+    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    notes TEXT,
+    FOREIGN KEY (inventory_id) REFERENCES inventory(inventory_id)
+);
+
+
+
+
+

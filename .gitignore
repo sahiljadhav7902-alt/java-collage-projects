@@ -1,0 +1,41 @@
+# Java
+*.class
+
+# Logs
+*.log
+
+# Package Files
+*.jar
+*.war
+*.ear
+
+# Maven
+/target/
+/.mvn/wrapper/maven-wrapper.jar
+
+# NetBeans
+.nb-gradle/
+nbproject/private/
+nbbuild/
+build/
+dist/
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.classpath
+.project
+.settings/
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Others
+*.log
+*.tmp
